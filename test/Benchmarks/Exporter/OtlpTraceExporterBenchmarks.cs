@@ -19,17 +19,35 @@ using OpenTelemetryProtocol::OpenTelemetry.Exporter;
 using OtlpCollector = OpenTelemetryProtocol::OpenTelemetry.Proto.Collector.Trace.V1;
 
 /*
-BenchmarkDotNet v0.13.6, Windows 11 (10.0.22621.2134/22H2/2022Update/SunValley2) (Hyper-V)
+BenchmarkDotNet v0.13.12, Windows 11 (10.0.26100.2314) (Hyper-V)
 AMD EPYC 7763, 1 CPU, 16 logical and 8 physical cores
-.NET SDK 7.0.400
-  [Host]     : .NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2
-  DefaultJob : .NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2
+.NET SDK 9.0.100
+  [Host]     : .NET 8.0.11 (8.0.1124.51707), X64 RyuJIT AVX2
+  DefaultJob : .NET 8.0.11 (8.0.1124.51707), X64 RyuJIT AVX2
 
 
-|                 Method |     Mean |   Error |  StdDev |   Gen0 |   Gen1 | Allocated |
-|----------------------- |---------:|--------:|--------:|-------:|-------:|----------:|
-| OtlpTraceExporter_Http | 139.4 us | 1.41 us | 1.32 us | 0.4883 | 0.2441 |    9.8 KB |
-| OtlpTraceExporter_Grpc | 263.0 us | 3.47 us | 3.24 us | 0.4883 |      - |   9.34 KB |
+| Method                        | Mean     | Error   | StdDev  | Gen0   | Gen1   | Allocated |
+|------------------------------ |---------:|--------:|--------:|-------:|-------:|----------:|
+| OtlpTraceExporter_Http        | 133.9 us | 2.19 us | 2.05 us | 0.4883 | 0.2441 |   9.52 KB |
+| OtlpTraceExporter_Http_Custom | 120.7 us | 1.53 us | 1.43 us | 0.2441 |      - |      5 KB |
+| OtlpTraceExporter_Grpc        | 189.6 us | 3.74 us | 5.36 us |      - |      - |   8.98 KB |
+| OtlpTraceExporter_Grpc_Custom | 168.7 us | 3.21 us | 3.15 us |      - |      - |   6.56 KB |
+
+
+
+BenchmarkDotNet v0.13.12, Windows 11 (10.0.26100.2314)
+Snapdragon X1E78100, 1 CPU, 12 logical and 12 physical cores
+.NET SDK 9.0.100
+  [Host]     : .NET 8.0.11 (8.0.1124.51707), Arm64 RyuJIT AdvSIMD
+  DefaultJob : .NET 8.0.11 (8.0.1124.51707), Arm64 RyuJIT AdvSIMD
+
+
+| Method                        | Mean     | Error    | StdDev   | Gen0   | Gen1   | Allocated |
+|------------------------------ |---------:|---------:|---------:|-------:|-------:|----------:|
+| OtlpTraceExporter_Http        | 43.34 us | 0.537 us | 0.820 us | 2.4414 | 2.4414 |   9.52 KB |
+| OtlpTraceExporter_Http_Custom | 41.75 us | 0.688 us | 0.819 us | 1.2207 | 1.0986 |      5 KB |
+| OtlpTraceExporter_Grpc        | 58.74 us | 0.381 us | 0.318 us | 2.1973 |      - |   8.99 KB |
+| OtlpTraceExporter_Grpc_Custom | 55.96 us | 0.286 us | 0.253 us | 1.5869 |      - |   6.55 KB |
 */
 
 namespace Benchmarks.Exporter;
