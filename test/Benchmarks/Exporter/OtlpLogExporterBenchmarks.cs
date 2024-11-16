@@ -32,6 +32,21 @@ AMD EPYC 7763, 1 CPU, 16 logical and 8 physical cores
 | OtlpLogExporter_Http_Custom | 123.8 us | 1.63 us | 1.52 us | 0.2441 |      - |      5 KB |
 | OtlpLogExporter_Grpc        | 199.2 us | 3.97 us | 8.12 us |      - |      - |   8.97 KB |
 | OtlpLogExporter_Grpc_Custom | 153.2 us | 2.91 us | 4.95 us |      - |      - |   5.08 KB |
+
+
+BenchmarkDotNet v0.13.12, Windows 11 (10.0.26100.2314)
+Snapdragon X1E78100, 1 CPU, 12 logical and 12 physical cores
+.NET SDK 9.0.100
+  [Host]     : .NET 8.0.11 (8.0.1124.51707), Arm64 RyuJIT AdvSIMD
+  DefaultJob : .NET 8.0.11 (8.0.1124.51707), Arm64 RyuJIT AdvSIMD
+
+
+| Method                      | Mean     | Error    | StdDev   | Gen0   | Gen1   | Allocated |
+|---------------------------- |---------:|---------:|---------:|-------:|-------:|----------:|
+| OtlpLogExporter_Http        | 44.86 us | 0.892 us | 1.160 us | 2.4414 | 2.3193 |   9.52 KB |
+| OtlpLogExporter_Http_Custom | 43.59 us | 0.831 us | 1.411 us | 1.2207 | 1.0986 |      5 KB |
+| OtlpLogExporter_Grpc        | 59.72 us | 1.182 us | 1.452 us | 2.1973 |      - |   8.98 KB |
+| OtlpLogExporter_Grpc_Custom | 54.27 us | 0.407 us | 0.340 us | 1.2207 |      - |   5.08 KB |
 */
 
 namespace Benchmarks.Exporter;
