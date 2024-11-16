@@ -34,6 +34,7 @@ AMD EPYC 7763, 1 CPU, 16 logical and 8 physical cores
 | OtlpLogExporter_Grpc_Custom | 153.2 us | 2.91 us | 4.95 us |      - |      - |   5.08 KB |
 
 
+
 BenchmarkDotNet v0.13.12, Windows 11 (10.0.26100.2314)
 Snapdragon X1E78100, 1 CPU, 12 logical and 12 physical cores
 .NET SDK 9.0.100
